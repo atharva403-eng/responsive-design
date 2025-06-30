@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register then Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <div class="button-box">
+        <div id="btn"></div>
+        <button type="button" class="toggle-btn active" onclick="showLogin()">Login</button>
+        <button type="button" class="toggle-btn" onclick="showRegister()">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login" class="input-group">
+        <input type="email" class="input-field" placeholder="Email" name="loginEmail" autocomplete="off" required />
+        <input type="password" class="input-field" placeholder="Password" name="loginPassword" autocomplete="off" required />
+        <button type="submit" class="submit-btn">Login</button>
+        <p id="loginMsg" class="success-msg"></p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register" class="input-group active">
+        <input type="text" class="input-field" placeholder="Name" name="regName" autocomplete="off" required />
+        <input type="email" class="input-field" placeholder="Email" name="regEmail" autocomplete="off" required />
+        <input type="password" class="input-field" placeholder="Password" name="regPassword" autocomplete="off" required />
+        <input type="password" class="input-field" placeholder="Confirm Password" name="regConfirmPassword" autocomplete="off" required />
+        <button type="submit" class="submit-btn">Register</button>
+        <p id="registerMsg" class="success-msg"></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("login");
+    const registerForm = document.getElementById("register");
+    const toggleBtns = document.querySelectorAll(".toggle-btn");
+    const btnSlider = document.getElementById("btn");
+
+    function setActiveButton(index) {
+      toggleBtns.forEach((btn, i) => {
+        btn.classList.toggle("active", i === index);
+      });
+    }
+
+    function showRegister() {
+      registerForm.classList.add("active");
+      loginForm.classList.remove("active");
+      btnSlider.style.left = "50%";
+      setActiveButton(1);
+    }
+
+    function showLogin() {
+      loginForm.classList.add("active");
+      registerForm.classList.remove("active");
+      btnSlider.style.left = "0%";
+      setActiveButton(0);
+    }
+
+    // Handle Register Submit
+    registerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const pass = registerForm.regPassword.value;
+      const confirmPass = registerForm.regConfirmPassword.value;
+
+      if (pass !== confirmPass) {
+        document.getElementById("registerMsg").textContent = "Passwords do not match!";
+        document.getElementById("registerMsg").style.color = "red";
+        return;
+      }
+
+      document.getElementById("registerMsg").textContent = "Register Successful!";
+      document.getElementById("registerMsg").style.color = "green";
+
+      // Switch to login after 1 second
+      setTimeout(() => {
+        showLogin();
+        document.getElementById("registerMsg").textContent = "";
+      }, 1000);
+    });
+
+    // Handle Login Submit
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("loginMsg").textContent = "Login Successful!";
+      document.getElementById("loginMsg").style.color = "green";
+    });
+
+    // Start on Register form
+    showRegister();
+  </script>
+</body>
+</html>

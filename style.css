@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: linear-gradient(120deg, #3498db, #8e44ad);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 90%;
+  max-width: 350px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.form-box {
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.button-box {
+  width: 220px;
+  position: relative;
+  box-shadow: 0 0 20px 9px #ff61241f;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 10px 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s;
+  z-index: 1;
+}
+
+.toggle-btn.active {
+  color: white;
+}
+
+#btn {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: #3498db;
+  border-radius: 30px;
+  transition: 0.5s;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.input-group {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+}
+
+.input-group.active {
+  display: flex;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border: none;
+  border-bottom: 1px solid #999;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 30px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #2980b9;
+}
+
+.success-msg {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@media (max-width: 500px) {
+  .button-box {
+    width: 100%;
+  }
+
+  .toggle-btn {
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    font-size: 14px;
+  }
+}
+
